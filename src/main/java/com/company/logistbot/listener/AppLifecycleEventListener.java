@@ -34,58 +34,42 @@ public class AppLifecycleEventListener {
         if (update.message() != null && update.message().text() != null) {
             Long chatId = update.message().chat().id();
             if (update.message().text().equals("/start") || update.message().text().equals("\uD83D\uDC48\uD83C\uDFFBНазад")) {
+
                 botStart(bot, chatId);
-            }
-            else if (update.callbackQuery()!=null) {
+
+            }  else if (update.callbackQuery()!=null) {
                 String call_data = update.callbackQuery().data();
                 long chat_id = update.callbackQuery().message().chat().id();
-
             }
-
             if (update.message().text().equals("Водитель")) {
                 SendMessage askDelevery = null;
                 askDelevery = new SendMessage(chatId, "\uD83D\uDC64 Введите Ф.И.О.водителя\n" +
                         "(пример: Иван Иванов Иванович)\n");
-
-
-
-                KeyboardButton back =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
-                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(back);
+                KeyboardButton backButton =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
+                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(backButton);
                 replyKeyboardMarkup.resizeKeyboard(true);
                 askDelevery.replyMarkup(replyKeyboardMarkup);
 
                 bot.execute(askDelevery);
 
-                backButton(update, bot, chatId);
-            }else if(update.message().text().equals("Логист")){
-                SendMessage askCall = null;
-                askCall = new SendMessage(chatId, "\uD83D\uDC64 Введите Ф.И.О. логиста\n" +
+                backFunc(update, bot, chatId);
+            }else if (update.message().text().equals("Логист")) {
+                SendMessage askDelevery = null;
+                askDelevery = new SendMessage(chatId, "\uD83D\uDC64 Введите Ф.И.О. логиста\n" +
                         "(пример: Иван Иванов Иванович)\n");
-
-                KeyboardButton back =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
-                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(back);
+                KeyboardButton backButton =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
+                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(backButton);
                 replyKeyboardMarkup.resizeKeyboard(true);
-                askCall.replyMarkup(replyKeyboardMarkup);
+                askDelevery.replyMarkup(replyKeyboardMarkup);
 
-                bot.execute(askCall);
+                bot.execute(askDelevery);
 
-                backButton(update, bot, chatId);
-            }else if(update.message().text().equals("Контакты")){
-                SendMessage phone = new SendMessage(chatId,"\uD83C\uDFE2Контакты\n"+"☎Телефон:\n"+"+998 123 45 67\n");
-                KeyboardButton back =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
-                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(back);
-                replyKeyboardMarkup.resizeKeyboard(true);
-                phone.replyMarkup(replyKeyboardMarkup);
-
-                bot.execute(phone);
-
-                backButton(update, bot, chatId);
+                backFunc(update, bot, chatId);
             }
-
         }
     }
 
-    private void backButton(Update update, TelegramBot bot, Long chatId) {
+    private void backFunc(Update update, TelegramBot bot, Long chatId) {
         if (update.message().text().equals("Назад")) {
             SendMessage back = new SendMessage(chatId, "\uD83D\uDC48\uD83C\uDFFBНазад");
 
