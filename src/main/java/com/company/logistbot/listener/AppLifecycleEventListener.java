@@ -42,10 +42,12 @@ public class AppLifecycleEventListener {
 
             }
 
-            if (update.message().text().equals("Доставшик")) {
+            if (update.message().text().equals("Водитель")) {
                 SendMessage askDelevery = null;
-                askDelevery = new SendMessage(chatId, "\uD83D\uDC64 Введите Ф.И.О.\n" +
+                askDelevery = new SendMessage(chatId, "\uD83D\uDC64 Введите Ф.И.О.водителя\n" +
                         "(пример: Иван Иванов Иванович)\n");
+
+
 
                 KeyboardButton back =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
                 ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(back);
@@ -55,9 +57,9 @@ public class AppLifecycleEventListener {
                 bot.execute(askDelevery);
 
                 backButton(update, bot, chatId);
-            }else if(update.message().text().equals("Слушатель")){
+            }else if(update.message().text().equals("Логист")){
                 SendMessage askCall = null;
-                askCall = new SendMessage(chatId, "\uD83D\uDC64 Введите Ф.И.О.\n" +
+                askCall = new SendMessage(chatId, "\uD83D\uDC64 Введите Ф.И.О. логиста\n" +
                         "(пример: Иван Иванов Иванович)\n");
 
                 KeyboardButton back =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
@@ -69,7 +71,7 @@ public class AppLifecycleEventListener {
 
                 backButton(update, bot, chatId);
             }else if(update.message().text().equals("Контакты")){
-                SendMessage phone = new SendMessage(chatId,"\uD83C\uDFE2Контакты\n"+"☎Телефон:\n"+"+998 99 477 9737\n");
+                SendMessage phone = new SendMessage(chatId,"\uD83C\uDFE2Контакты\n"+"☎Телефон:\n"+"+998 123 45 67\n");
                 KeyboardButton back =new KeyboardButton("\uD83D\uDC48\uD83C\uDFFBНазад");
                 ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup(back);
                 replyKeyboardMarkup.resizeKeyboard(true);
@@ -97,8 +99,8 @@ public class AppLifecycleEventListener {
         SendMessage sendMessage = new SendMessage(chatId, "*\uD83D\uDC4B\uD83C\uDFFBЗдраствуйте*\n");
         sendMessage.parseMode(ParseMode.Markdown);
 
-        KeyboardButton delivery =new KeyboardButton("Доставшик");
-        KeyboardButton call =new KeyboardButton("Слушатель");
+        KeyboardButton delivery =new KeyboardButton("Водитель");
+        KeyboardButton call =new KeyboardButton("Логист");
         KeyboardButton phone =new KeyboardButton("Контакты");
 
         List<List<KeyboardButton>> list = new ArrayList<>();
