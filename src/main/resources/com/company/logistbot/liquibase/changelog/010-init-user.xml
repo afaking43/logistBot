@@ -76,4 +76,21 @@
 
     </changeSet>
 
+    <changeSet id="6" author="logistBot" context="!cuba">
+        <createTable tableName="TG_USER">
+            <column name="ID" type="${uuid.type}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="CHAT_ID" type="varchar(255)"/>
+            <column name="NAME" type="varchar(255)"/>
+            <column name="PHONE" type="varchar(255)"/>
+            <column name="USERNAME" type="varchar(255)"/>
+            <column name="CAR_DESCRIPTION" type="varchar(255)"/>
+            <column name="START_LOCATION" type="varchar(255)"/>
+            <column name="END_LOCATION" type="varchar(255)"/>
+            <column name="ITEM_DESCRIBE" type="varchar(255)"/>
+            <column name="CURRENT_QUESTION" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
