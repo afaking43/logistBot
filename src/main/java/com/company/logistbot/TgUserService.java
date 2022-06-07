@@ -15,7 +15,7 @@ public class TgUserService {
     @Autowired
     private SystemAuthenticator systemAuthenticator;
 
-    public TgUser saveOrGetTgUser(Long chatId) {
+    public TgUser saveOrGetTgUser(Long chatId, boolean b) {
         TgUser tgUser = systemAuthenticator.withSystem(() -> dataManager.load(TgUser.class)
                 .query("select e from tg_User e where e.chatId=:chatId")
                 .parameter("chatId", chatId.toString())
@@ -28,13 +28,18 @@ public class TgUserService {
                     }
             );
         } else {
+            if (b)
+                systemAuthenticator.withSystem(() -> {
+                    tgUser.setCurrentQuestion(null);
+                    return dataManager.save(tgUser);
+                });
             return tgUser;
         }
     }
 
     public void saveQuestion(Question whatName, Long chatId) {
         systemAuthenticator.withSystem(() -> {
-                    TgUser tgUser = saveOrGetTgUser(chatId);
+                    TgUser tgUser = saveOrGetTgUser(chatId, true);
                     tgUser.setCurrentQuestion(whatName);
                     dataManager.save(tgUser);
                     return tgUser;

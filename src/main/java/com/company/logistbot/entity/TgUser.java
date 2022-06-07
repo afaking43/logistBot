@@ -23,6 +23,9 @@ public class TgUser {
     @Column(name = "USERNAME")
     private String username;
 
+//    @Column(name = "CAR_DESCRIPTION")
+//    private String carDescription;
+
     @Column(name = "PHONE")
     private String phone;
 
@@ -36,49 +39,13 @@ public class TgUser {
     @Column(name = "CHAT_ID")
     private String chatId;
 
-    @Column(name = "CAR_DESCRIPTION")
-    private String carDescription;
-
-    @Column(name = "START_LOCATION")
-    private String startLocation;
-
-    @Column(name = "END_LOCATION")
-    private String endLocation;
-
-    @Column(name = "ITEM_DESCRIBE")
-    private String itemDescribe;
-
-    public String getCarDescription() {
-        return carDescription;
-    }
-
-    public void setCarDescription(String carDescription) {
-        this.carDescription = carDescription;
-    }
-
-    public String getItemDescribe() {
-        return itemDescribe;
-    }
-
-    public void setItemDescribe(String itemDescribe) {
-        this.itemDescribe = itemDescribe;
-    }
-
-    public String getEndLocation() {
-        return endLocation;
-    }
-
-    public void setEndLocation(String endLocation) {
-        this.endLocation = endLocation;
-    }
-
-    public String getStartLocation() {
-        return startLocation;
-    }
-
-    public void setStartLocation(String startLocation) {
-        this.startLocation = startLocation;
-    }
+//    public String getCarDescription() {
+//        return carDescription;
+//    }
+//
+//    public void setCarDescription(String carDescription) {
+//        this.carDescription = carDescription;
+//    }
 
     public void setChatId(String chatId) {
         this.chatId = chatId;
